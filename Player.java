@@ -13,12 +13,22 @@ public class Player
         this.money = 100;
     }
 
-    public void playTurn()
+    public void playTurn(Deck deck)
     {
-        Scanner hitOrStay = new Scanner("Do you want to hit (h) or stay (s)? To hit type h, to stay type s.");
-        String userInput = hitOrStay.nextLine();
-        userInput.toLowerCase();
+        Scanner playTurnScanner = new Scanner(System.in);
+        System.out.println("Do you want to hit (h) or stay (s) type h or s");
+        String hitOrStay = playTurnScanner.nextLine();
+        hitOrStay.toLowerCase();
 
+        if(hitOrStay == "h")
+        {
+            this.hit(deck);
+        }
+        else
+        {
+            return;
+        }
+        
     }
 
     public void hit(Deck deck)
@@ -60,4 +70,6 @@ public class Player
     {
         //do stuff
     }
+
+    
 }
