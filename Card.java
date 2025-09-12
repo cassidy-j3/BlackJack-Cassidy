@@ -15,4 +15,9 @@ public class Card
     {
         return this.face + " of " + this.suit + "(" + this.value + ")";
     }
+
+    public int getCardValue()
+    {
+        return value;
+    }
 }
