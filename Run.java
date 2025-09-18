@@ -26,9 +26,25 @@ public class Run {
 
         for (int i = 0; i <= playerList.size(); i++)
         {
-            while ()
+            Player currentPlayer = playerList.get(i);
+            currentPlayer.playTurn(deck);
+            if(currentPlayer.getHandValue() > 21)
             {
-                
+                System.out.println("You lost");
+                // subtract their bet
+            }
+            else if (currentPlayer.getHandValue() == 21)
+            {
+                System.out.println("You win");
+                // gets 1.5x bet
+            }
+            //else if (players hand == dealers hand){
+            // player gets no money, but doesn't lose money
+            //}
+            else
+            {
+                System.out.println("You win!!");
+                //player gets their bet back
             }
         }
 

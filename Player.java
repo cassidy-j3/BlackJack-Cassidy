@@ -23,6 +23,10 @@ public class Player
         if(hitOrStay == "h")
         {
             this.hit(deck);
+            if (this.getHandValue() > 21)
+            {
+                return;
+            }
         }
         else
         {
@@ -71,5 +75,14 @@ public class Player
         //do stuff
     }
 
-    
+    public double preTurnBetting()
+    {
+
+    }
+
+    public double postTurnBetting()
+    {
+
+    }
+
 }
