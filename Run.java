@@ -8,6 +8,7 @@ public class Run {
         Scanner numScanner = new Scanner(System.in);
         System.out.println("How many players? ");
         int numOfPlayers = numScanner.nextInt();
+        numScanner.nextLine();
 
         ArrayList<Player> playerList = new ArrayList<>();
 
@@ -19,39 +20,29 @@ public class Run {
 
             Player player = new Player(playerName);
             playerList.add(player);
-
-            player.hit(deck);
-            player.hit(deck);
         }
 
-        for (int i = 0; i <= playerList.size(); i++)
+        boolean gameGoing = true;
+        while (gameGoing = true)
         {
-            Player currentPlayer = playerList.get(i);
-            currentPlayer.playTurn(deck);
-            if(currentPlayer.getHandValue() > 21)
+            for (Player player : playerList)
             {
-                System.out.println("You lost");
-                // subtract their bet
+                player.setBet();
+
+                player.hit(deck);
+
+                player.hit(deck);
+                
+
             }
-            else if (currentPlayer.getHandValue() == 21)
+            
+            for (int i = 0; i <= playerList.size(); i++)
             {
-                System.out.println("You win");
-                // gets 1.5x bet
-            }
-            //else if (players hand == dealers hand){
-            // player gets no money, but doesn't lose money
-            //}
-            else
-            {
-                System.out.println("You win!!");
-                //player gets their bet back
+                Player currentPlayer = playerList.get(i);
+                currentPlayer.playTurn(deck);
+                handleBet(dealer.getDealerHandValue());
             }
         }
 
-
-        // for(Card card : deck.getCards())
-        // {
-        //     System.out.println(card);
-        // }
     }
 }

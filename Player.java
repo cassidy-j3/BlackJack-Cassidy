@@ -6,11 +6,14 @@ public class Player
     private String name;
     private double money;
     private ArrayList<Card> hand = new ArrayList<>();
+    private double bet;
 
     public Player(String name)
     {
         this.name = name;
         this.money = 100;
+        this.bet = 0;
+
     }
 
     public void playTurn(Deck deck)
@@ -39,6 +42,11 @@ public class Player
     {
        Card newCard = deck.getTopCard();
        this.hand.add(newCard);
+       for (Card card : hand)
+       {
+        System.out.println(card);
+       }
+        System.out.println("Your total hand value is " + getHandValue());
     }
 
     public int getHandValue()
@@ -75,14 +83,58 @@ public class Player
         //do stuff
     }
 
-    public double preTurnBetting()
+    public void setBet()
     {
-
+        boolean validBet = false;
+        while (validBet = false)
+        {
+            Scanner bettingScanner = new Scanner(System.in);
+            System.out.println("How much money do you want to bet? you have " + money + " dollars.");
+            Double setPlayerBet = bettingScanner.nextDouble();
+            bettingScanner.nextLine();
+            if (setPlayerBet <= this.money)
+            {
+                this.bet = setPlayerBet;
+                validBet = true;
+            }
+            else
+            {
+                System.out.println("Invalid bet try again but better :(");
+                System.out.println("Hit enter to continue...");
+                bettingScanner.nextLine();
+            }
+            
+        }
+       
     }
 
-    public double postTurnBetting()
+    public void handleBet(int dealerHandValue)
     {
-
+        if(getHandValue() > 21)
+        {
+            System.out.println("You lost");
+            this.money = money-bet;
+        }
+        else if (getHandValue() == dealerHandValue)
+        {
+            System.out.println("You tied, you don't win or lose money.");
+        }
+        else if (getHandValue() == 21)
+        {
+            System.out.println("You win");
+            this.bet = bet*1.5;
+            this.money = bet + money;
+        }
+        else if (dealerHandValue > getHandValue())
+        {
+            System.out.println("You lose");
+            this.money = money-bet;
+        }
+        else
+        {
+            System.out.println("You win!!");
+            this.money = bet + money;
+        }
     }
 
 }
