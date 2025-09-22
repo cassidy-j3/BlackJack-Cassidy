@@ -41,11 +41,18 @@ public class Dealer extends Player
     {
         Card newCard = deck.getTopCard();
         this.dealerHand.add(newCard);
-        for (int i = 1; i <= dealerHand.size(); i++)
+        if (dealerHand.size() == 1)
         {
-            System.out.println(dealerHand.get(i));
+            System.out.println("You can't see any cards yet poor you.");
         }
-        System.out.println("The dealer's total hand value is " + getDealerHandValue());
+        else
+        {
+            for (int i = 1; i <= dealerHand.size(); i++)
+            {
+                System.out.println(dealerHand.get(i));
+            }
+        }
+
 
     }
 }

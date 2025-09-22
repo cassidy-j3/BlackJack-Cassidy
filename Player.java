@@ -112,7 +112,7 @@ public class Player
     {
         if(getHandValue() > 21)
         {
-            System.out.println("You lost");
+            System.out.println("You lose");
             this.money = money-bet;
         }
         else if (getHandValue() == dealerHandValue)
@@ -121,7 +121,7 @@ public class Player
         }
         else if (getHandValue() == 21)
         {
-            System.out.println("You win");
+            System.out.println("You win!!");
             this.bet = bet*1.5;
             this.money = bet + money;
         }
@@ -132,7 +132,7 @@ public class Player
         }
         else
         {
-            System.out.println("You win!!");
+            System.out.println("You win");
             this.money = bet + money;
         }
     }

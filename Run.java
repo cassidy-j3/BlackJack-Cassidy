@@ -22,9 +22,14 @@ public class Run {
             playerList.add(player);
         }
 
+        Dealer dealer = new Dealer();
+
         boolean gameGoing = true;
         while (gameGoing = true)
         {
+            dealer.dealerHit(deck);
+            dealer.dealerHit(deck);
+
             for (Player player : playerList)
             {
                 player.setBet();
@@ -40,8 +45,9 @@ public class Run {
             {
                 Player currentPlayer = playerList.get(i);
                 currentPlayer.playTurn(deck);
-                handleBet(dealer.getDealerHandValue());
+                currentPlayer.handleBet(dealer.getDealerHandValue());
             }
+            gameGoing = false;
         }
 
     }
