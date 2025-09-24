@@ -18,23 +18,34 @@ public class Player
 
     public void playTurn(Deck deck)
     {
-        Scanner playTurnScanner = new Scanner(System.in);
-        System.out.println("Do you want to hit (h) or stay (s) type h or s");
-        String hitOrStay = playTurnScanner.nextLine();
-        hitOrStay.toLowerCase();
-
-        if(hitOrStay == "h")
+        boolean going = true;
+        while (going == true)
         {
-            this.hit(deck);
-            if (this.getHandValue() > 21)
+            Scanner playTurnScanner = new Scanner(System.in);
+            System.out.println("Do you want to hit (h) or stay (s) type h or s");
+            String hitOrStay = playTurnScanner.nextLine();
+            hitOrStay.toLowerCase();
+
+
+            if(hitOrStay.equals("h"))
             {
-                return;
+                this.hit(deck);
+                if (this.getHandValue() > 21)
+                {
+                    break;
+                }
+            else if (getHandValue() > 21)
+            {
+                System.out.println("You lose and are done");
+                break;
+            }
+            }
+            else
+            {
+                break;
             }
         }
-        else
-        {
-            return;
-        }
+       
         
     }
 
@@ -42,11 +53,11 @@ public class Player
     {
        Card newCard = deck.getTopCard();
        this.hand.add(newCard);
-       for (Card card : hand)
-       {
-        System.out.println(card);
-       }
-        System.out.println("Your total hand value is " + getHandValue());
+    }
+
+    public ArrayList getHand()
+    {
+        return hand;
     }
 
     public int getHandValue()
@@ -78,15 +89,20 @@ public class Player
         return totalVal;
     }
 
-    public void getCard(Deck deck)
+    public double getMoney()
     {
-        //do stuff
+        return money;
+    }
+
+    public String getName()
+    {
+        return name;
     }
 
     public void setBet()
     {
         boolean validBet = false;
-        while (validBet = false)
+        while (validBet == false)
         {
             Scanner bettingScanner = new Scanner(System.in);
             System.out.println("How much money do you want to bet? you have " + money + " dollars.");
@@ -135,6 +151,7 @@ public class Player
             System.out.println("You win");
             this.money = bet + money;
         }
+        System.out.println("You have" +money+ " left");
     }
 
 }

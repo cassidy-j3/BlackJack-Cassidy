@@ -25,29 +25,45 @@ public class Run {
         Dealer dealer = new Dealer();
 
         boolean gameGoing = true;
-        while (gameGoing = true)
+        while (gameGoing == true)
         {
-            dealer.dealerHit(deck);
-            dealer.dealerHit(deck);
+            dealer.firstDealerHit(deck);
+            dealer.secondDealerHit(deck);
 
             for (Player player : playerList)
             {
                 player.setBet();
 
+                System.out.println(player.getName() + " has");
+
                 player.hit(deck);
 
                 player.hit(deck);
-                
-
             }
-            
-            for (int i = 0; i <= playerList.size(); i++)
+
+            for(Player player : playerList)
             {
-                Player currentPlayer = playerList.get(i);
-                currentPlayer.playTurn(deck);
-                currentPlayer.handleBet(dealer.getDealerHandValue());
+                player.playTurn(deck);
             }
-            gameGoing = false;
+
+            dealer.dealerTurn(deck);
+
+            for (Player player : playerList)
+            {
+                player.handleBet(dealer.getDealerHandValue());
+                if (player.getMoney() == 0.0)
+                {
+                    gameGoing = false;
+                }
+            }
+            Scanner keepPlayingScanner = new Scanner(System.in);
+            System.out.println("Do you want to keep playing? (y or n)");
+            String keepPlaying = keepPlayingScanner.nextLine();
+            keepPlaying.toLowerCase();
+            if (keepPlaying.equals("n"))
+            {
+                gameGoing = false;
+            }
         }
 
     }
