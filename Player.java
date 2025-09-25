@@ -32,6 +32,7 @@ public class Player
                 this.hit(deck);
                 if (this.getHandValue() > 21)
                 {
+                    System.out.println("You lose and are done");
                     break;
                 }
             else if (getHandValue() > 21)
@@ -49,16 +50,17 @@ public class Player
         
     }
 
+    public void printHand()
+    {
+        System.out.println(name + " has " + hand);
+    }
+
     public void hit(Deck deck)
     {
        Card newCard = deck.getTopCard();
        this.hand.add(newCard);
     }
 
-    public ArrayList getHand()
-    {
-        return hand;
-    }
 
     public int getHandValue()
     {
@@ -130,6 +132,11 @@ public class Player
         {
             System.out.println("You lose");
             this.money = money-bet;
+        }
+        else if (dealerHandValue > 21)
+        {
+            System.out.println("You win");
+            this.money = money + bet;
         }
         else if (getHandValue() == dealerHandValue)
         {

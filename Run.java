@@ -46,6 +46,7 @@ public class Run {
                 player.playTurn(deck);
             }
 
+
             dealer.dealerTurn(deck);
 
             for (Player player : playerList)
@@ -53,7 +54,7 @@ public class Run {
                 player.handleBet(dealer.getDealerHandValue());
                 if (player.getMoney() == 0.0)
                 {
-                    gameGoing = false;
+                    break;
                 }
             }
             Scanner keepPlayingScanner = new Scanner(System.in);
@@ -62,7 +63,7 @@ public class Run {
             keepPlaying.toLowerCase();
             if (keepPlaying.equals("n"))
             {
-                gameGoing = false;
+                break;
             }
         }
 
