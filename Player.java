@@ -21,6 +21,7 @@ public class Player
         boolean going = true;
         while (going == true)
         {
+            printHand();
             Scanner playTurnScanner = new Scanner(System.in);
             System.out.println("Do you want to hit (h) or stay (s) type h or s");
             String hitOrStay = playTurnScanner.nextLine();
@@ -159,6 +160,14 @@ public class Player
             this.money = bet + money;
         }
         System.out.println("You have" +money+ " left");
+    }
+
+    public void dealCards(Deck deck)
+    {
+        this.hand = new ArrayList<>();
+        hit(deck);
+        hit(deck);
+
     }
 
 }

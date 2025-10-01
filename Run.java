@@ -34,11 +34,9 @@ public class Run {
             {
                 player.setBet();
 
-                System.out.println(player.getName() + " has");
+                player.dealCards(deck);
 
-                player.hit(deck);
-
-                player.hit(deck);
+                player.printHand();
             }
 
             for(Player player : playerList)
@@ -52,9 +50,13 @@ public class Run {
             for (Player player : playerList)
             {
                 player.handleBet(dealer.getDealerHandValue());
+            }
+            for (Player player : playerList)
+            {
                 if (player.getMoney() == 0.0)
                 {
-                    break;
+                    playerList.remove(player);
+                    System.out.println(player.getName() + " lost and can't play anymore womp womp" );
                 }
             }
             Scanner keepPlayingScanner = new Scanner(System.in);
