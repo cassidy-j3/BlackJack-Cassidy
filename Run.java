@@ -27,10 +27,10 @@ public class Run {
         boolean gameGoing = true;
         while (gameGoing == true)
         {
-            dealer.firstDealerHit(deck);
-            dealer.secondDealerHit(deck);
+            dealer.dealCardsDealer(deck);
 
             for (Player player : playerList)
+
             {
                 player.setBet();
 
@@ -46,6 +46,7 @@ public class Run {
 
 
             dealer.dealerTurn(deck);
+            System.out.println(dealer.getDealerHandValue());
 
             for (Player player : playerList)
             {
