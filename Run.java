@@ -52,12 +52,13 @@ public class Run {
             {
                 player.handleBet(dealer.getDealerHandValue());
             }
-            for (Player player : playerList)
+            for (int i=playerList.size()-1; i>=0; i--)
             {
+                Player player = playerList.get(i);
                 if (player.getMoney() == 0.0)
                 {
-                    playerList.remove(player);
                     System.out.println(player.getName() + " lost and can't play anymore womp womp" );
+                    playerList.remove(i);
                 }
             }
             Scanner keepPlayingScanner = new Scanner(System.in);
