@@ -65,7 +65,7 @@ public class Run {
             System.out.println("Do you want to keep playing? (y or n)");
             String keepPlaying = keepPlayingScanner.nextLine();
             keepPlaying.toLowerCase();
-            if (keepPlaying.equals("n"))
+            if (keepPlaying.equals("n") || playerList.size() == 0)
             {
                 break;
             }
